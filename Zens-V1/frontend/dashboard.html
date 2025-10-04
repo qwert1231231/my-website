@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — Aizenno</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/ui.js" defer></script>
+  <script type="module" src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="img/logo.png" alt="logo" class="logo">
+        <span class="brand-title">Aizenno</span>
+      </div>
+
+      <nav class="main-nav">
+        <a href="chat.html">Chat</a>
+        <a href="subscription.html">Subscription</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="themeToggleHeader" class="icon-btn">🌙</button>
+        <div class="profile-menu">
+          <img id="profileIcon" src="img/gear-icon.svg" alt="profile" class="gear-icon">
+          <div id="profileDropdown" class="dropdown hidden">
+            <p><strong id="pdName">Username</strong></p>
+            <p id="pdEmail" class="muted">email@example.com</p>
+            <div class="dropdown-row">
+              <button class="btn" onclick="location.href='profile.html'">View profile</button>
+              <button id="logoutBtn" class="btn btn-ghost">Logout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="dashboard-top">
+      <h2>Welcome back, <span id="greetName">friend</span> 👋</h2>
+      <p class="muted">Your recent chats and actions are below.</p>
+    </section>
+
+    <section class="cards-grid">
+      <div class="card">
+        <h3>Quick chat</h3>
+        <p>Start a session with Zenno instantly.</p>
+        <button class="btn" onclick="location.href='chat.html'">Open Chat</button>
+      </div>
+      <div class="card">
+        <h3>Subscription</h3>
+        <p>Manage your plan and billing info.</p>
+        <button class="btn btn-ghost" onclick="location.href='subscription.html'">Manage</button>
+      </div>
+      <div class="card">
+        <h3>Saved data</h3>
+        <p>All saved conversations & notes.</p>
+        <button class="btn" onclick="location.href='profile.html'">View</button>
+      </div>
+    </section>
+
+    <section id="recentChats" class="recent-chats">
+      <h3>Recent chats</h3>
+      <ul id="chatList" class="chat-list">
+        <!-- populated by JS -->
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year4"></span> Aizenno</div>
+      <div class="footer-links"><a href="terms.html">Terms</a></div>
+    </div>
+  </footer>
+</body>
+</html>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </div>
+  </footer>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Logout — Aizenno</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/main.js" defer></script>
+</head>
+<body>
+  <main class="container center card">
+    <h2>Logging out...</h2>
+    <p class="muted">You will be redirected to the home page shortly.</p>
+  </main>
+
+  <script>
+    // immediate logout and redirect
+    import("./js/main.js").then(m=>{
+      m.signOut().then(()=> {
+        setTimeout(()=> location.href = "index.html", 700);
+      });
+    }).catch(()=> location.href="index.html");
+  </script>
+</body>
+</html>

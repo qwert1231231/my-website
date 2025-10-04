@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Feedback — Aizenno</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/ui.js" defer></script>
+  <script type="module" src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header slim">
+    <div class="container header-inner">
+      <div class="brand"><img src="img/logo.png" class="logo"><span class="brand-title">Aizenno</span></div>
+      <nav class="main-nav"><a href="dashboard.html">Dashboard</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Send feedback</h2>
+      <p class="muted">Tell us what you like or request a feature.</p>
+
+      <form id="feedbackForm" class="form-stack">
+        <textarea id="feedbackText" placeholder="Write your feedback..." required></textarea>
+        <div class="row">
+          <button class="btn btn-primary" type="submit">Send feedback</button>
+          <button class="btn btn-ghost" type="button" id="feedbackLater">Save draft</button>
+        </div>
+      </form>
+      <div id="feedbackResult" class="feedback"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer small">
+    <div class="container footer-inner">© <span id="year9"></span> Aizenno</div>
+  </footer>
+</body>
+</html>

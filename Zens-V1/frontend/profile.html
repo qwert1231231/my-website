@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile — Aizenno</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/ui.js" defer></script>
+  <script type="module" src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header slim">
+    <div class="container header-inner">
+      <div class="brand"><img src="img/logo.png" class="logo"><span class="brand-title">Aizenno</span></div>
+      <nav class="main-nav"><a href="dashboard.html">Dashboard</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="profile-card card">
+      <div class="profile-top">
+        <img src="img/avatar-placeholder.png" alt="avatar" class="avatar">
+        <div>
+          <h2 id="profileName">Your name</h2>
+          <p id="profileEmailText" class="muted">email@example.com</p>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <h3>Saved conversations</h3>
+        <ul id="savedList" class="saved-list">
+          <!-- dynamic -->
+        </ul>
+      </div>
+
+      <div class="profile-actions">
+        <button onclick="location.href='settings.html'" class="btn btn-ghost">Edit profile</button>
+        <button id="downloadData" class="btn">Download all data</button>
+      </div>
+      <div id="profileFeedback" class="feedback"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer small">
+    <div class="container footer-inner">© <span id="year8"></span> Aizenno</div>
+  </footer>
+</body>
+</html>
+    <main class="container">
+        <section class="cards-grid">
+        <div class="card">
+            <h3>Quick chat</h3>
+            <p>Start a session with Zenno instantly.</p>
+            <button class="btn" onclick="location.href='chat.html'">Open Chat</button>
+        </div>
+        <div class="card">
+            <h3>Subscription</h3>
+            <p>Manage your plan and billing info.</p>
+            <button class="btn btn-ghost" onclick="location.href='subscription.html'">Manage</button>
+        </div>
+        <div class="card">
+            <h3>Saved data</h3>

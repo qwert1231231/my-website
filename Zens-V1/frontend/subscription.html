@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Subscription — Aizenno</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/ui.js" defer></script>
+  <script type="module" src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand"><img src="img/logo.png" class="logo"> <span class="brand-title">Aizenno</span></div>
+      <nav class="main-nav"><a href="dashboard.html">Dashboard</a></nav>
+      <div class="header-actions"><button onclick="location.href='profile.html'" class="btn btn-ghost">Profile</button></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="subscription-top card">
+      <h2>Choose a plan</h2>
+      <p class="muted">Pick the plan that fits your needs. You can change anytime.</p>
+    </section>
+
+    <section class="plans-grid">
+      <div class="plan card highlight">
+        <h3>Free</h3>
+        <p>Basic chat & saving (no calls)</p>
+        <button class="subscriptionButton btn" data-plan="free">Select Free</button>
+      </div>
+      <div class="plan card">
+        <h3>Standard — $5/mo</h3>
+        <p>Text unlimited + limited calls</p>
+        <button class="subscriptionButton btn btn-primary" data-plan="standard">$5 / month</button>
+      </div>
+      <div class="plan card">
+        <h3>Pro — $29/mo</h3>
+        <p>Unlimited calls, personalities, and faster responses</p>
+        <button class="subscriptionButton btn btn-primary" data-plan="pro">$29 / month</button>
+      </div>
+    </section>
+
+    <div id="subscriptionFeedback" class="feedback"></div>
+  </main>
+
+  <footer class="site-footer small">
+    <div class="container footer-inner">© <span id="year6"></span> Aizenno</div>
+  </footer>
+</body>
+</html>
+        <p>View and manage your saved chats and data.</p>
+            <button class="btn btn-ghost" onclick="location.href='data.html'">Manage</button>
+        </div>
+        </section>
+    </main>
+    
+    <footer class="site-footer small">
+        <div class="container footer-inner">
+        <div>© <span id="year4"></span> Aizenno</div>
+        <nav class="footer-nav">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="chat.html">Chat</a>
+            <a href="subscription.html">Subscription</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="terms.html">Terms</a>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenno Chat</title>
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f5f6fa;
+      color: #333;
+      height: 100vh;
+      display: flex;
+    }
+
+    .app-container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: #111827;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar-header h2 {
+      font-size: 1.4rem;
+    }
+
+    .new-chat-btn {
+      background: #2563eb;
+      border: none;
+      color: #fff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .new-chat-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .sidebar-search {
+      margin: 1rem 0;
+    }
+
+    .sidebar-search input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+    }
+
+    .chat-list {
+      flex: 1;
+      overflow-y: auto;
+      margin-top: 1rem;
+    }
+
+    .chat-item {
+      padding: 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .chat-item.active,
+    .chat-item:hover {
+      background: #1e293b;
+    }
+
+    .sidebar-footer {
+      margin-top: 1rem;
+    }
+
+    .settings-btn {
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 6px;
+      background: #374151;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .settings-btn:hover {
+      background: #4b5563;
+    }
+
+    /* Chat main */
+    .chat-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: white;
+    }
+
+    .chat-header {
+      padding: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+      background: #f9fafb;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #f5f6fa;
+    }
+
+    .message {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .message.bot .avatar {
+      background: #2563eb;
+    }
+
+    .message.user .avatar {
+      background: #10b981;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.6rem;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .bubble {
+      background: #fff;
+      padding: 0.7rem 1rem;
+      border-radius: 12px;
+      max-width: 60%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Input */
+    .chat-input {
+      display: flex;
+      padding: 1rem;
+      border-top: 1px solid #e5e7eb;
+      background: #fff;
+    }
+
+    .chat-input textarea {
+      flex: 1;
+      padding: 0.6rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      resize: none;
+      height: 40px;
+      outline: none;
+    }
+
+    .chat-input button {
+      margin-left: 0.6rem;
+      background: #2563eb;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      width: 50px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .chat-input button:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Zenno</h2>
+        <button class="new-chat-btn">+ New Chat</button>
+      </div>
+
+      <div class="sidebar-search">
+        <input type="text" id="searchChat" placeholder="Search chats...">
+      </div>
+
+      <div class="chat-list">
+        <div class="chat-item active">Welcome Chat</div>
+        <div class="chat-item">Project Ideas</div>
+        <div class="chat-item">Research Notes</div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="settings-btn">⚙ Settings</button>
+      </div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <main class="chat-main">
+      <div class="chat-header">
+        <h2>Chat</h2>
+      </div>
+
+      <!-- Messages -->
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+          <div class="avatar">🤖</div>
+          <div class="bubble">Hello! I'm Zenno. How can I help you today?</div>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input">
+        <textarea id="userInput" placeholder="Type your message..."></textarea>
+        <button id="sendBtn">➤</button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sendBtn = document.getElementById("sendBtn");
+      const userInput = document.getElementById("userInput");
+      const chatMessages = document.getElementById("chatMessages");
+
+      function addMessage(text, sender = "user") {
+        const msg = document.createElement("div");
+        msg.classList.add("message", sender);
+
+        const avatar = document.createElement("div");
+        avatar.classList.add("avatar");
+        avatar.textContent = sender === "user" ? "🙂" : "🤖";
+
+        const bubble = document.createElement("div");
+        bubble.classList.add("bubble");
+        bubble.textContent = text;
+
+        msg.appendChild(avatar);
+        msg.appendChild(bubble);
+        chatMessages.appendChild(msg);
+
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      sendBtn.addEventListener("click", async () => {
+        const text = userInput.value.trim();
+        if (!text) return;
+        addMessage(text, "user");
+        userInput.value = "";
+
+        // Simulate bot response (replace with Flask fetch later)
+        setTimeout(() => {
+          addMessage("This is a placeholder reply. Backend not connected yet!", "bot");
+        }, 800);
+      });
+    });
+  </script>
+</body>
+</html>
